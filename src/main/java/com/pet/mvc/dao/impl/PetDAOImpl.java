@@ -2,6 +2,7 @@ package com.pet.mvc.dao.impl;
 
 import com.pet.mvc.dao.PetDAO;
 import com.pet.mvc.models.Pet;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -9,12 +10,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class PetDAOImpl implements PetDAO {
     private final SessionFactory sessionFactory;
 
-    public PetDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     @Override
     public List<Pet> getAll() {

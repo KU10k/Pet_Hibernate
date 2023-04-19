@@ -31,13 +31,20 @@ public class Pet {
             "the animal must not be younger than 3 years old")
     private int age;
 
-//    @NotBlank(message = "Specify the gender of the animal")
-//    private String sexOfTheAnimal;
-//    private String city;
-//    @NotBlank(message = "The mail data was entered incorrectly")
-//    @Email(message = "Isn't email")
-//    private String emailOfTheOwner;
-//    @Pattern(regexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{10}$",message = "Pleas use pattern +7-XXX-XXX-XX-XX" )
-//    private String phoneNumberOfTheOwner;
+    @Column(name = "sex_of_the_animal")
+    @NotBlank(message = "Specify the gender of the animal")
+    private String sexOfTheAnimal;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "email")
+    @NotBlank(message = "The mail data was entered incorrectly")
+    @Email(message = "Isn't email")
+    private String emailOfTheOwner;
+
+    @Column(name = "phone_number")
+    @Pattern(regexp = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{10}$",message = "Pleas use pattern +7-XXX-XXX-XX-XX" )
+    private String phoneNumberOfTheOwner;
 
 }
