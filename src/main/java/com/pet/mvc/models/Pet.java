@@ -1,4 +1,5 @@
 package com.pet.mvc.models;
+import com.pet.mvc.validation.CheckEmail;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -41,6 +42,7 @@ public class Pet {
     @Column(name = "email")
     @NotBlank(message = "The mail data was entered incorrectly")
     @Email(message = "Isn't email")
+    @CheckEmail
     private String emailOfTheOwner;
 
     @Column(name = "phone_number")

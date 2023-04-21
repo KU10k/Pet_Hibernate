@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,10 @@
 </head>
 <body>
 <div class="container mt-4">
-    <h2>Pets</h2>
+    <h2>Pet <c:if test="${create == true}">create</c:if><c:if test="${create == false}">update</c:if></h2>
     <hr>
 
-    <form:form method="post" action="/update" modelAttribute="pet">
+    <form:form method="post" action="/create-update" modelAttribute="pet">
 
         <form:hidden path="id"/>
         Pet: <form:input path="pets"/>

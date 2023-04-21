@@ -31,28 +31,23 @@ public class PetController {
     }
     @GetMapping("/create")
     public String petCreate(Model model){
+        model.addAttribute("create",true);
         model.addAttribute("pet",new Pet());
-        return "pet-save";
-    }
-    @PostMapping("/create")
-    public String petCreate(@Valid @ModelAttribute("pet") Pet pet, BindingResult result){
-        if(result.hasErrors()) return "pet-save";
-        petService.saveOrUpdate(pet);
-        return "redirect:/";
+        return "pet-save-or-update";
     }
     @GetMapping("/update/{id}")
     public String petUpdate(@PathVariable("id") int id,Model model){
+        model.addAttribute("create",false);
         model.addAttribute("pet",petService.getById(id));
-        return "pet-update";
+        return "pet-save-or-update";
     }
-
-    @PostMapping("/update")
-    public String petUpdate(@Valid @ModelAttribute("pet") Pet pet, BindingResult result){
-        if (result.hasErrors()) return "pet-update";
+    @PostMapping("/create-update")
+    public String petCreate(@Valid @ModelAttribute("pet") Pet pet, BindingResult result){
+        if(result.hasErrors()) return "pet-save-or-update";
         petService.saveOrUpdate(pet);
         return "redirect:/";
-
     }
+
 
     @PostMapping("/delete/{id}")
     public String petDelete(@PathVariable("id") int id){
